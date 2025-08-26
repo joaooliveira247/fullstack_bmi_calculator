@@ -8,7 +8,7 @@ type Measures struct {
 }
 
 func (measures *Measures) BMI() float64 {
-	bmi := measures.Weigth / (measures.Heigth * measures.Heigth)
+	bmi := measures.Weight / (measures.Height * measures.Height)
 	return math.Round(bmi*100) / 100
 }
 
