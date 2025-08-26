@@ -3,8 +3,8 @@ package utils
 import "math"
 
 type Measures struct {
-	Weigth float64
-	Heigth float64
+	Weight float64
+	Height float64
 }
 
 func (measures *Measures) BMI() float64 {
