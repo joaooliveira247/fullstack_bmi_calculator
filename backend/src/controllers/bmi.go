@@ -14,6 +14,16 @@ func NewBMIController() *BMIController {
 	return &BMIController{}
 }
 
+// GetBMI Returns BMI send in JSON
+// @Summary Returns BMI
+// @Description Returns BMI send in JSON
+// @Tags BMI
+// @Accept json
+// @Produce json
+// @Param data body schemas.BMIIn true "Widht and Height to calcule BMI"
+// @Success 200 {object} schemas.BMIOut
+// @Failure 400 {object} map[string]string
+// @Router /bmi/ [post]
 func (ctrl *BMIController) GetBMI(ctx *gin.Context) {
 	var bmi schemas.BMIIn
 
