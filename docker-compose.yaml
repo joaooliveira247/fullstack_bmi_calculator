@@ -1,0 +1,19 @@
+version: "3.9"
+
+services:
+  bmi_api:
+    image: golang:tip-alpine3.22
+    restart: "no"
+    working_dir: /app
+    volumes:
+      - ./backend:/app
+    command: sh -c "go build -o server . && ./server"
+    networks:
+      - bmi_fullstack_service
+    expose:
+      - "8000"
+    ports:
+      - "8000:${BMI_API_DEV_PORT:-8000}"
+
+networks:
+  bmi_fullstack_service:
