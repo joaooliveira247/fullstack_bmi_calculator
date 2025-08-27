@@ -1,0 +1,84 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "description": "BMI Calculator API.",
+        "title": "BMI API",
+        "contact": {},
+        "version": "1.0"
+    },
+    "host": "localhost:8000",
+    "basePath": "/",
+    "paths": {
+        "/bmi/": {
+            "post": {
+                "description": "Returns BMI send in JSON",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "BMI"
+                ],
+                "summary": "Returns BMI",
+                "parameters": [
+                    {
+                        "description": "Widht and Height to calcule BMI",
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/schemas.BMIIn"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/schemas.BMIOut"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "type": "object",
+                            "additionalProperties": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "schemas.BMIIn": {
+            "type": "object",
+            "required": [
+                "height",
+                "weight"
+            ],
+            "properties": {
+                "height": {
+                    "type": "number"
+                },
+                "weight": {
+                    "type": "number"
+                }
+            }
+        },
+        "schemas.BMIOut": {
+            "type": "object",
+            "properties": {
+                "BMI": {
+                    "type": "number"
+                },
+                "message": {
+                    "type": "string"
+                }
+            }
+        }
+    }
+}
