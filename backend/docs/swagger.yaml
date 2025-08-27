@@ -1,0 +1,55 @@
+basePath: /
+definitions:
+  schemas.BMIIn:
+    properties:
+      height:
+        type: number
+      weight:
+        type: number
+    required:
+    - height
+    - weight
+    type: object
+  schemas.BMIOut:
+    properties:
+      BMI:
+        type: number
+      message:
+        type: string
+    type: object
+host: localhost:8000
+info:
+  contact: {}
+  description: BMI Calculator API.
+  title: BMI API
+  version: "1.0"
+paths:
+  /bmi/:
+    post:
+      consumes:
+      - application/json
+      description: Returns BMI send in JSON
+      parameters:
+      - description: Widht and Height to calcule BMI
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/schemas.BMIIn'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/schemas.BMIOut'
+        "400":
+          description: Bad Request
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+      summary: Returns BMI
+      tags:
+      - BMI
+swagger: "2.0"
