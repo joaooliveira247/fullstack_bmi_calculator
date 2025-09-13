@@ -3,9 +3,15 @@ interface CardProps {
     children: React.ReactNode;
 }
 
-const Card = (props: CardProps) => {
-    const cardProps = `bg-[#2D3249] w-full h-[${props.height}px] rounded-2xl`;
-    return <div className={cardProps}>{props.children}</div>;
+const Card = ({ height, children }: CardProps) => {
+    return (
+        <div
+            className="bg-[#2D3249] w-full rounded-2xl flex justify-center items-center"
+            style={{ height }}
+        >
+            {children}
+        </div>
+    );
 };
 
 export default Card;
