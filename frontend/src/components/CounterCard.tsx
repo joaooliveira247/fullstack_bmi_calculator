@@ -20,7 +20,7 @@ const CounterCard = ({
     const decrease = () => value > min && onChange(value - 1);
     return (
         <Card height={180}>
-            <h2 className="text-2xl text-white">{label}</h2>
+            <h2 className="text-2xl text-[#8B8C9E]">{label}</h2>
             <span className="text-5xl text-white">{value}</span>
             <div className="flex gap-8">
                 <button
