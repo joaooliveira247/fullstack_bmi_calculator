@@ -1,1 +1,6 @@
-export { IconGenderFemale, IconGenderMale, IconCirclePlus, IconCircleMinus } from "@tabler/icons-react";
+export {
+    IconGenderFemale,
+    IconGenderMale,
+    IconMinus,
+    IconPlus,
+} from "@tabler/icons-react";
