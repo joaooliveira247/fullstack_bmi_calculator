@@ -15,7 +15,7 @@ const HeightCard = ({
 }: HeightCardProps) => {
     return (
         <Card height={189}>
-            <h2 className="text-2xl text-white">Heigth</h2>
+            <h2 className="text-2xl text-[#8B8C9E]">Height</h2>
             <div className="text-white">
                 <span className="text-5xl">{value}</span>
                 <span>cm</span>
