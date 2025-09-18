@@ -7,6 +7,11 @@ type Measures struct {
 	Height float64
 }
 
+type BMICategory struct {
+	Status  string
+	Message string
+}
+
 func (measures *Measures) BMI() float64 {
 	bmi := measures.Weight / (measures.Height * measures.Height)
 	return math.Round(bmi*100) / 100
