@@ -34,8 +34,14 @@ func (ctrl *BMIController) GetBMI(ctx *gin.Context) {
 
 	measures := utils.Measures(bmi)
 
+	category := measures.Category()
+
 	ctx.JSON(
 		http.StatusOK,
-		&schemas.BMIOut{BMI: measures.BMI(), Message: measures.Category()},
+		&schemas.BMIOut{
+			BMI:     measures.BMI(),
+			Status:  category.Status,
+			Message: category.Message,
+		},
 	)
 }
