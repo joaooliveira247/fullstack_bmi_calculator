@@ -16,47 +16,56 @@ func TestGetBMISuccess(t *testing.T) {
 	testCases := []struct {
 		Body            string
 		ExpectedBMI     float64
+		ExpectedStatus  string
 		ExpectedMessage string
 	}{
 		{
 			Body:            `{"weight": 40, "height": 1.7}`,
 			ExpectedBMI:     13.84,
-			ExpectedMessage: "Severe thinness ⚠️ 🪦",
+			ExpectedStatus:  "Severe thinness",
+			ExpectedMessage: "Very low BMI ⚠️🪦 — severe health risk, seek urgent medical help.",
 		},
 		{
 			Body:            `{"weight": 47, "height": 1.7}`,
 			ExpectedBMI:     16.26,
-			ExpectedMessage: "Modarate thinness ⚠️ 🏃‍♂️",
+			ExpectedStatus:  "Moderate thinness",
+			ExpectedMessage: "Low BMI ⚠️🏃‍♂️ — moderate malnutrition risk, pay attention to nutrition.",
 		},
 		{
 			Body:            `{"weight": 52, "height": 1.7}`,
 			ExpectedBMI:     17.99,
-			ExpectedMessage: "Mild thinness ⚠️ 🍵",
+			ExpectedStatus:  "Mild thinness",
+			ExpectedMessage: "Slightly below normal ⚠️🍵 — improve diet to avoid deficiencies.",
 		},
 		{
 			Body:            `{"weight": 68, "height": 1.7}`,
 			ExpectedBMI:     23.53,
-			ExpectedMessage: "Normal ✅ 🟢",
+			ExpectedStatus:  "Normal",
+			ExpectedMessage: "Healthy BMI ✅🟢 — keep up the good habits.",
 		},
 		{
 			Body:            `{"weight": 80, "height": 1.7}`,
 			ExpectedBMI:     27.68,
-			ExpectedMessage: "Overweight ⚠️ 🍔",
+			ExpectedStatus:  "Overweight",
+			ExpectedMessage: "Above the ideal range ⚠️🍔 — higher risk of health issues if maintained.",
 		},
 		{
 			Body:            `{"weight": 95, "height": 1.7}`,
 			ExpectedBMI:     32.87,
-			ExpectedMessage: "Obese class I 🔴 ⚠️",
+			ExpectedStatus:  "Obese class I",
+			ExpectedMessage: "Obesity class I 🔴⚠️ — health risks present, consider professional support.",
 		},
 		{
 			Body:            `{"weight": 110, "height": 1.7}`,
 			ExpectedBMI:     38.06,
-			ExpectedMessage: "Obese class II 🔴🚨",
+			ExpectedStatus:  "Obese class II",
+			ExpectedMessage: "Obesity class II 🔴🚨 — high risk of complications, seek medical guidance.",
 		},
 		{
 			Body:            `{"weight": 120, "height": 1.7}`,
 			ExpectedBMI:     41.52,
-			ExpectedMessage: "Obese class III 🛑 🏥",
+			ExpectedStatus:  "Obese class III",
+			ExpectedMessage: "Obesity class III 🛑🏥 — very high risk, medical treatment is essential.",
 		},
 	}
 
@@ -81,8 +90,9 @@ func TestGetBMISuccess(t *testing.T) {
 		assert.JSONEq(
 			t,
 			fmt.Sprintf(
-				`{"BMI": %.2f, "message": "%s"}`,
+				`{"BMI": %.2f, "status": "%s", "message": "%s"}`,
 				testCase.ExpectedBMI,
+				testCase.ExpectedStatus,
 				testCase.ExpectedMessage,
 			),
 			w.Body.String(),
