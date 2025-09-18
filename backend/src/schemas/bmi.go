@@ -7,5 +7,6 @@ type BMIIn struct {
 
 type BMIOut struct {
 	BMI     float64 `json:"BMI"`
+	Status  string  `json:"status"`
 	Message string  `json:"message"`
 }
