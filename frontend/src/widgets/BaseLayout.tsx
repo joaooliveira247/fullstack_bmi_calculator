@@ -2,6 +2,8 @@ import CalculateButton from "@/components/Button";
 
 interface BaseLayoutProps {
     children: React.ReactNode;
+    buttonName: string;
+    onClickButton: () => void;
 }
 
 const BaseLayout = (props: BaseLayoutProps) => {
@@ -19,7 +21,10 @@ const BaseLayout = (props: BaseLayoutProps) => {
                     {props.children}
                 </div>
                 <div className="flex-1">
-                    <CalculateButton buttonName="Calculate" />
+                    <CalculateButton
+                        buttonName={props.buttonName}
+                        onClick={props.onClickButton}
+                    />
                 </div>
             </div>
         </div>
