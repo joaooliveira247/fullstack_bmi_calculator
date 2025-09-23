@@ -3,6 +3,7 @@ package main
 import (
 	"log"
 
+	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
 	_ "github.com/joaooliveira247/fullstack_bmi_calculator/backend/docs"
 	"github.com/joaooliveira247/fullstack_bmi_calculator/backend/src/routes"
@@ -15,6 +16,9 @@ import (
 // @BasePath /
 func main() {
 	api := gin.Default()
+
+	api.Use(cors.Default())
+
 	routes.RegisterRoutes(api)
 
 	if err := api.Run(":8000"); err != nil {
