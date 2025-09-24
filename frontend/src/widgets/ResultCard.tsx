@@ -2,6 +2,16 @@ import { BMIData } from "@/services/bmiApi";
 import BaseLayout from "./BaseLayout";
 import Card from "@/components/Cards";
 
+type BMIStatus =
+    | "Severe thinness"
+    | "Moderate thinness"
+    | "Mild thinness"
+    | "Normal"
+    | "Overweight"
+    | "Obese class I"
+    | "Obese class II"
+    | "Obese class III";
+
 interface ResultCardProps {
     bmi: BMIData | null;
     onClick: () => void;
