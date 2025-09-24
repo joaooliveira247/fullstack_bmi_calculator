@@ -12,6 +12,17 @@ type BMIStatus =
     | "Obese class II"
     | "Obese class III";
 
+const bmiStatusTextColors: Record<BMIStatus, string> = {
+    "Severe thinness": "text-red-800",
+    "Moderate thinness": "text-orange-700",
+    "Mild thinness": "text-yellow-700",
+    Normal: "text-green-600",
+    Overweight: "text-amber-700",
+    "Obese class I": "text-rose-700",
+    "Obese class II": "text-pink-700",
+    "Obese class III": "text-purple-700",
+};
+
 interface ResultCardProps {
     bmi: BMIData | null;
     onClick: () => void;
