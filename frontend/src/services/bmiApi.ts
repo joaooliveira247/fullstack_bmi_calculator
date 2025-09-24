@@ -1,5 +1,5 @@
 export interface BMIData {
-    bmi: number;
+    BMI: number;
     status: string;
     message: string;
 }
