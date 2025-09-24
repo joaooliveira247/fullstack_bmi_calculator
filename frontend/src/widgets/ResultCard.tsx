@@ -39,7 +39,11 @@ const ResultCard = (props: ResultCardProps) => {
                     Your Result
                 </h2>
                 <Card height={521}>
-                    <h3 className="font-semibold text-4xl">
+                    <h3
+                        className={`font-semibold text-4xl ${
+                            bmiStatusTextColors[props.bmi.status as BMIStatus]
+                        }`}
+                    >
                         {props.bmi.status}
                     </h3>
                     <h2 className="text-white font-semibold text-8xl">
